@@ -127,22 +127,22 @@ scrape_nsch_table <- function(i, year, cshcn_cat) {
   names(tb) <- c('group', 'state', sprintf('fpl_%s', c('000100', '100200', '200400', '400000')))
   
   tb_clean <-
-    tb %>%
-    filter(state == "%") %>% 
-    select(-state) %>% rename(state = group) %>%
-    select(-fpl_200400, -fpl_400000)%>%
-    pivot_longer(-state) %>% rename(mid_nsch = value) %>%
-    left_join(tb %>%
-                filter(state == "C.I.") %>% 
-                select(-state) %>% rename(state = group) %>%
-                select(-fpl_200400, -fpl_400000) %>%
-                pivot_longer(-state) %>%
+    tb |>
+    filter(state == "%") |> 
+    select(-state) |> rename(state = group) |>
+    select(-fpl_200400, -fpl_400000)|>
+    pivot_longer(-state) |> rename(mid_nsch = value) |>
+    left_join(tb |>
+                filter(state == "C.I.") |> 
+                select(-state) |> rename(state = group) |>
+                select(-fpl_200400, -fpl_400000) |>
+                pivot_longer(-state) |>
                 separate(value, c("low_nsch", "high_nsch"), "-"),
-              by = c("state", "name")) %>%
-    mutate(year = as.character({year})) %>% relocate(year, .before = state) %>%
-    mutate(cshcn_class = as.character({cshcn_cat})) %>%
-    filter(state != "District of Columbia") %>%
-    mutate(state = ifelse(state == "Nationwide", "United States", state)) %>%
+              by = c("state", "name")) |>
+    mutate(year = as.character({year})) |> relocate(year, .before = state) |>
+    mutate(cshcn_class = as.character({cshcn_cat})) |>
+    filter(state != "District of Columbia") |>
+    mutate(state = ifelse(state == "Nationwide", "United States", state)) |>
     rename(fpl_class = name)
   
   return(tb_clean)

@@ -5,8 +5,8 @@ source(file.path('scripts', '01_functions.R'))
 
 #source(file.path('scripts', '02_data-processing.R'))
 #ssa <- readRDS(file.path('data', 'processed', 'ssa.RDS'))
-#nsch <- readRDS(file.path('data', 'processed', 'nsch.RDS'))
 #acs_point <- readRDS(file.path('data', 'processed', 'acs_point.RDS'))
+#nsch <- readRDS(file.path('data', 'processed', 'nsch.RDS'))
 df_disprev_year <- readRDS(file.path('data', 'processed', 'df_disprev_year.RDS'))
 df_disprev <- readRDS(file.path('data', 'processed', 'df_disprev.RDS'))
 df_ssi_year <- readRDS(file.path('data', 'processed', 'df_ssi_year.RDS'))
@@ -138,7 +138,7 @@ f_usa
 ggsave(
   f_usa,
   filename = file.path('results', '01_method', 'usa-heatmap.png'),
-  width = 11.5,
+  width = 5,
   height = 8,
   dpi = 300,
   units = "in"
@@ -212,8 +212,8 @@ f_ssi <-
   geom_point() +
   geom_smooth(formula = y ~ x, method = "lm", color = "black") +
   ggrepel::geom_text_repel(aes(label = sy), max.overlaps = 4, size = 5) +
-  ggpubr::stat_regline_equation(label.y = 0.9, size = 5) + 
-  ggpubr::stat_cor(label.y = 0.8, size = 5) + 
+  ggpubr::stat_regline_equation(label.x = 0.43, label.y = 0.5, size = 5) + 
+  ggpubr::stat_cor(label.x = 0.43, label.y = 0.45, size = 5) + 
   scale_x_continuous(label = scales::label_percent(accuracy = 1L)) + #, limits = c(0.025, 0.125)
   scale_y_continuous(label = scales::label_percent(accuracy = 1L)) + #, limits = c(0.01, 0.2)
   theme_minimal() + 

@@ -113,9 +113,13 @@ df_ssi_year |>
 
 
 
+write_csv(acs_boot, file.path('data', 'raw', 'acs', 'acs_raw.csv'))
+write_csv(acs_point, file.path('data', 'raw', 'acs', 'acs.csv'))
+write_csv(nsch, file.path('data', 'raw', 'nsch', 'nsch.csv'))
+
 saveRDS(ssa, file.path('data', 'processed', 'ssa.RDS'))
-saveRDS(nsch, file.path('data', 'processed', 'nsch.RDS'))
 saveRDS(acs_point, file.path('data', 'processed', 'acs_point.RDS'))
+saveRDS(nsch, file.path('data', 'processed', 'nsch.RDS'))
 saveRDS(df_disprev_year, file.path('data', 'processed', 'df_disprev_year.RDS'))
 saveRDS(df_disprev, file.path('data', 'processed', 'df_disprev.RDS'))
 saveRDS(df_ssi_year, file.path('data', 'processed', 'df_ssi_year.RDS'))
