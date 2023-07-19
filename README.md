@@ -1,7 +1,7 @@
 
 # Child Supplemental Security Income (SSI) Program Participation Estimation
 
-This repository contains mostly R files that are used to generate tables and figures for `manuscript_method.docx`. The downloaded SSA data is stored as CSVs in `data/raw/ssa/recipients/`, while ACS and NSCH are loaded in through `tidycensus` API and a scraper leveraging the `rvest` packages and eventually saved in `data/raw/acs` and `data/raw/nsch`, respectively. Functions for all of these data imports are found in `scripts/01_functions.R`.
+This repository contains mostly R files that are used to generate tables and figures for `manuscript_method.docx`. The downloaded SSA data is stored as CSVs in `data/raw/ssa/recipients/`, while ACS and NSCH are loaded in through `tidycensus` API and a scraper leveraging the `rvest` packages and eventually saved in `data/raw/acs/` and `data/raw/nsch/`, respectively. Functions for all of these data imports are found in `scripts/01_functions.R`.
 
 ## Directory Tree
 
